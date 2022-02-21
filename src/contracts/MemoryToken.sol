@@ -1,8 +1,16 @@
-pragma solidity ^0.5.0;
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.5.0;
 
 import "./ERC721Full.sol";
 
 contract MemoryToken is ERC721Full {
-  // Code goes here...
+  constructor() ERC721Full("MemToken","symb") public {} 
 
+  function mint (address _address,string memory _tokenURI) public returns (bool){ 
+    uint _tokenId =  totalSupply().add(1);
+    _mint(_address, _tokenId); 
+    _setTokenURI(_tokenId,_tokenURI); 
+    return true;
+  }
+    
 }
