@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-undef
 const MemoryToken = artifacts.require("MemoryToken");
 
 module.exports = function(deployer) {
-  // Code goes here...
+  deployer.deploy(MemoryToken)
 };
