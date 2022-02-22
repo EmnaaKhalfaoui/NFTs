@@ -3,6 +3,7 @@ import Web3 from 'web3'
 import './App.css';
 import MemoryToken from '../abis/MemoryToken.json'
 import Navbar from '../components/Navbar/Navbar'
+import swal from "sweetalert";
 
 const CARD_ARRAY = [
   {
@@ -119,7 +120,7 @@ class App extends Component {
     else if(this.state.cardsChosenId.includes(cardId)) {
       return CARD_ARRAY[cardId].img
     } else {
-      return window.location.origin + '/images/blank.png'
+      return window.location.origin + '/images/question.png'
     }
   }
 
@@ -142,9 +143,20 @@ class App extends Component {
     const optionTwoId = this.state.cardsChosenId[1]
 
     if(optionOneId == optionTwoId) {
-      alert('You have clicked the same image!')
+      swal({
+        title: "Focus",
+        text: "You have clicked the same image!",
+        icon: "info",
+        button: "Ok"
+      });
+    
     } else if (this.state.cardsChosen[0] === this.state.cardsChosen[1]) {
-      alert('You found a match')
+       swal({
+        title: "Congratulations!",
+        text: "You found the match",
+        icon: "success",
+        button: "Proceed to reclaim"
+      });
       this.state.token.methods.mint(
         this.state.account,
         window.location.origin + CARD_ARRAY[optionOneId].img.toString()
@@ -157,14 +169,28 @@ class App extends Component {
         })
       })
     } else {
-      alert('Sorry, try again')
+ 
+      swal({
+        title: "Oops!",
+        text: "Wrong match",
+        icon: "error",
+        button: "Try again?"
+      });
     }
     this.setState({
       cardsChosen: [],
       cardsChosenId: []
     })
     if (this.state.cardsWon.length === CARD_ARRAY.length) {
-      alert('Congratulations! You found them all!')
+       alert('Congratulations! You found them all!')
+       swal({
+        title: "Congratulations!",
+        text: "You found them all!",
+        icon: "success",
+        button: "YEY"
+      });
+     
+    
     }
   }
 
