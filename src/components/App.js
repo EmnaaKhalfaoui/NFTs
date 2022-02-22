@@ -10,6 +10,10 @@ const CARD_ARRAY = [
     name: 'fries',
     img: '/images/fries.png'
   }, 
+  {
+    name: 'sea',
+    img: '/images/sea.png'
+  },
   
   {
     name: 'cheeseburger',
@@ -28,6 +32,10 @@ const CARD_ARRAY = [
     img: '/images/milkshake.png'
   },
   {
+    name: 'sea',
+    img: '/images/sea.png'
+  },
+  {
     name: 'hotdog',
     img: '/images/hotdog.png'
   },
@@ -38,6 +46,10 @@ const CARD_ARRAY = [
   {
     name: 'cheeseburger',
     img: '/images/cheeseburger.png'
+  }, 
+  {
+    name: 'sand',
+    img: '/images/sand.png'
   },
   {
     name: 'ice-cream',
@@ -54,6 +66,10 @@ const CARD_ARRAY = [
   {
     name: 'hotdog',
     img: '/images/hotdog.png'
+  }, 
+  {
+    name: 'sand',
+    img: '/images/sand.png'
   }
 ]
 
