@@ -215,15 +215,16 @@ class App extends Component {
        <Navbar/>
         <div className="container-fluid mt-5">
           <div className="row">
-            <main role="main" className="col-lg-12 d-flex text-center">
+            <main role="main" className="col-xl-12 d-flex text-center" >
               <div className="content mr-auto ml-auto">
-                <h1 className="d-6">Reclame your tokens</h1>
+                {/* <h1 className="hide">Reclame your tokens</h1> */}
 
-                <div className="grid mb-4" >
+                <div className="grid mb-12" >
 
                 { this.state.cardArray.map((card, key) => {
                     return(
                       <img alt=''
+                      
                         key={key}
                         src={this.chooseImage(key)}
                         data-id={key}
@@ -241,9 +242,9 @@ class App extends Component {
                 </div>
                 <div>
 
-                <h5>Tokens Collected:<span id="result">&nbsp;{this.state.tokenURIs.length}</span></h5>
+                <h5>You have collected<span id="result">&nbsp;{this.state.tokenURIs.length} token</span></h5>
 
-<div className="grid mb-4" >
+<div className="grid mb-3" >
 
   { this.state.tokenURIs.map((tokenURI, key) => {
     return(
