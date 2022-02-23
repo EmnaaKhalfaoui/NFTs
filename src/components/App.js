@@ -4,82 +4,88 @@ import './App.css';
 import MemoryToken from '../abis/MemoryToken.json'
 import Navbar from '../components/Navbar/Navbar'
 import swal from "sweetalert";
+import sound from './sound.mp3'; 
+import correctSound from './correctSound.mp3';
+
 
 const CARD_ARRAY = [
   {
-    name: 'fries',
-    img: '/images/fries.png'
+    name: '1',
+    img: '/images/1.png'
   }, 
   {
-    name: 'sea',
-    img: '/images/sea.png'
+    name: '2',
+    img: '/images/2.png'
   },
   
   {
-    name: 'cheeseburger',
-    img: '/images/cheeseburger.png'
+    name: '3',
+    img: '/images/3.png'
   },
   {
-    name: 'ice-cream',
-    img: '/images/ice-cream.png'
+    name: '5',
+    img: '/images/5.png'
   },
   {
-    name: 'pizza',
-    img: '/images/pizza.png'
+    name: '7',
+    img: '/images/7.png'
   },
   {
-    name: 'milkshake',
-    img: '/images/milkshake.png'
+    name: '6',
+    img: '/images/6.png'
   },
   {
-    name: 'sea',
-    img: '/images/sea.png'
+    name: '1',
+    img: '/images/1.png'
   },
   {
-    name: 'hotdog',
-    img: '/images/hotdog.png'
+    name: '4',
+    img: '/images/4.png'
   },
   {
-    name: 'fries',
-    img: '/images/fries.png'
+    name: '2',
+    img: '/images/2.png'
   },
   {
-    name: 'cheeseburger',
-    img: '/images/cheeseburger.png'
+    name: '3',
+    img: '/images/3.png'
   }, 
   {
-    name: 'sand',
-    img: '/images/sand.png'
+    name: '8',
+    img: '/images/8.png'
   },
   {
-    name: 'ice-cream',
-    img: '/images/ice-cream.png'
+    name: '5',
+    img: '/images/5.png'
   },
   {
-    name: 'pizza',
-    img: '/images/pizza.png'
+    name: '7',
+    img: '/images/7.png'
   },
   {
-    name: 'milkshake',
-    img: '/images/milkshake.png'
+    name: '6',
+    img: '/images/6.png'
   },
   {
-    name: 'hotdog',
-    img: '/images/hotdog.png'
+    name: '4',
+    img: '/images/4.png'
   }, 
   {
-    name: 'sand',
-    img: '/images/sand.png'
+    name: '8',
+    img: '/images/8.png',
+    
   }
 ]
 
-
+let wrongAnswer = new Audio(sound) 
+let correctAnswer = new Audio(correctSound)
 
 
 class App extends Component {
 
-  
+ 
 
+      
   async componentWillMount() {
     await this.loadWeb3()
     await this.loadBlockchainData()
@@ -165,6 +171,7 @@ class App extends Component {
         icon: "info",
         button: "Ok"
       });
+      wrongAnswer.play();
     
     } else if (this.state.cardsChosen[0] === this.state.cardsChosen[1]) {
        swal({
@@ -172,7 +179,8 @@ class App extends Component {
         text: "You found the match",
         icon: "success",
         button: "Proceed to reclaim"
-      });
+      }); 
+      correctAnswer.play()
       this.state.token.methods.mint(
         this.state.account,
         window.location.origin + CARD_ARRAY[optionOneId].img.toString()
@@ -191,7 +199,8 @@ class App extends Component {
         text: "Wrong match",
         icon: "error",
         button: "Try again?"
-      });
+      }); 
+      wrongAnswer.play();
     }
     this.setState({
       cardsChosen: [],
